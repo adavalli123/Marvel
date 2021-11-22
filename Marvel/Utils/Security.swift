@@ -1,10 +1,7 @@
 import Foundation
 import CryptoKit
 
-struct Security {
-//    static let publicKey = "d5bf5e2aa998634e91902b49b6162f4a"
-//    private static let privateKey = "e8152371d5a7c2f0e63cee716aeb7606c10783cd"
-    
+struct Security { 
     /// reference - https://stackoverflow.com/questions/32163848/how-can-i-convert-a-string-to-an-md5-hash-in-ios-using-swift
     static func md5Hash(timeStamp: Double) -> String {
         guard let data = (

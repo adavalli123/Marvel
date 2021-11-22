@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import UIKit
 
 class ListRepository: Repository {
     typealias RepositoryType = Character
@@ -8,7 +9,7 @@ class ListRepository: Repository {
         URLSession.fetch(endpoint, completion: completion)
     }
     
-    func cancel(_ endpoint: EndPoint, urlCache: [EndPoint : Bool]) {
-        URLSession.cancel(endpoint)
+    func fetchImage(_ endpoint: EndPoint, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+        URLSession.fetchImage(endpoint, completion: completion)
     }
 }

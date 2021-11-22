@@ -7,14 +7,14 @@
 
 import UIKit
 
-var imageCache = NSCache<AnyObject, AnyObject>()
+//var imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
 
-    func loadImage(urlString: String) {
-        
+    func loadImage(urlString: String, closure: @escaping (UIImage?) -> ()) {
         if let cacheImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             self.image = cacheImage
+            closure(cacheImage)
             return
         }
         
@@ -32,6 +32,7 @@ extension UIImageView {
             
             DispatchQueue.main.async {
                 self.image = image
+                closure(image)
             }
         }.resume()
 

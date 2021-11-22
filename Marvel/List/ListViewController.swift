@@ -2,81 +2,57 @@ import UIKit
 import CoreData
 
 class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    let repo = ListRepository()
-    let dataProvider = DataProvider()
-    var data: [Results] = [] {
-        didSet { offset = ((data.count/30) + 1) * 30 }
+    private let repo = ListRepository()
+    private let dataProvider = DataProvider()
+    private lazy var viewModel: ListViewModel = DefaultListViewModel(repo: repo, dataProvider: dataProvider)
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var offset = 0
+    private var filteredData: [Results] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
-    var urlCache: [EndPoint: Bool] = [:]
-    var isFetchInProgress = false
-    var offset = 0
-    var filteredData: [Results] = []
-    var isSearchBarEmpty: Bool {
+    private var isSearchBarEmpty: Bool {
       return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    var isFiltering: Bool {
+    private var isFiltering: Bool {
       return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    private var data: [Results] = [] {
+        didSet {
+            offset = ((data.count/10) + 1) * 10
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureUI()
+        viewModel.getResults(offset: 0) { [weak self] results in
+            self?.data = results
+        }
+    }
+    
+    private func configureUI() {
         tableView.estimatedRowHeight = 296
         tableView.rowHeight = UITableView.automaticDimension
         tableView.prefetchDataSource = self
         
-        // 1
         searchController.searchResultsUpdater = self
-        // 2
         searchController.obscuresBackgroundDuringPresentation = false
-        // 3
-        searchController.searchBar.placeholder = "Search Candies"
-        // 4
+        searchController.searchBar.placeholder = "Search Marvel heros"
         navigationItem.searchController = searchController
-        // 5
         definesPresentationContext = true
         
-        
         tableView.registerNib(for: ListCell.self)
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        urlCache[.characters(offset: 0)] = true
-        showHUD()
-        
-//        dataProvider.fetchAll { data in
-//            switch data {
-//            case .success(let results):
-//                self.data = results
-//
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//
-//            default:
-//                break
-//            }
-//        }
-        
-        guard !isFetchInProgress else { return }
-        self.isFetchInProgress = true
-        repo.fetch(.characters(offset: 0)) { result in
-            self.hideHUD()
-            switch result {
-            case .success(let characterData):
-                self.isFetchInProgress = false
-                self.data = characterData.data.results
-                self.dataProvider.save(character: characterData)
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            default:
-                break
-            }
-        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,45 +68,26 @@ class ListViewController: UITableViewController, UITableViewDataSourcePrefetchin
         cell.selectionStyle = .none
         
         let result = isFiltering ? filteredData[indexPath.row] : data[indexPath.row]
-        let url = result.thumbnail.path + "." + result.thumbnail.thumbnailExtension
-        cell.albumImageView.loadImage(urlString: url)
+        viewModel.getImages(result: result) { image in
+            DispatchQueue.main.async {
+                cell.albumImageView.image = image
+            }
+        }
         cell.titleLabel.text = result.name
         return cell
         
     }
     
+    private func isLoadingIndexPath(_ indexPath: IndexPath) -> Bool {
+        return indexPath.row >= self.data.count
+    }
+    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-//            guard indexPath.row >= data.count - offset/2 else {
-//                return
-//            }
-            showHUD()
-            guard !isFetchInProgress else { return }
-            isFetchInProgress = true
-            repo.fetch(.characters(offset: offset)) { result in
-                self.isFetchInProgress = false
-                self.hideHUD()
-                switch result {
-                case .success(let characterData):
-                    self.data += characterData.data.results
-                    self.dataProvider.save(character: characterData)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                case .failure(_):
-                    break
-                }
+        indexPaths.forEach { indexPath in
+            guard indexPath.row >= self.data.count - tableView.visibleCells.count else { return }
+            viewModel.getResults(offset: offset) { results in
+                self.data += results
             }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
-    }
-    
-    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            repo.cancel(.characters(offset: data.count), urlCache: urlCache)
         }
     }
     
@@ -143,7 +100,6 @@ class ListViewController: UITableViewController, UITableViewDataSourcePrefetchin
 
 extension ListViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    // TODO
       let searchBar = searchController.searchBar
       filterContentForSearchText(searchBar.text!)
   }
@@ -153,7 +109,5 @@ extension ListViewController: UISearchResultsUpdating {
       filteredData = data.filter { (result: Results) -> Bool in
         return result.name.lowercased().contains(searchText.lowercased())
       }
-      
-      tableView.reloadData()
     }
 }

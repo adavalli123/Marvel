@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
         guard let result = result else { return }
 
         let url = result.thumbnail.path + "." + result.thumbnail.thumbnailExtension
-        coverImagetView.loadImage(urlString: url)
+        coverImagetView.loadImage(urlString: url) { _ in }
         titleLabel.text = result.name
         
         let urlText = result.urls.map { $0.type }.joined(separator: "\t")

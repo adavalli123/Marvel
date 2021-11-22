@@ -28,7 +28,6 @@
 		DDB6F5F327460DA400D2BEFC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5F227460DA400D2BEFC /* Errors.swift */; };
 		DDB6F5F527460DC900D2BEFC /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5F427460DC900D2BEFC /* EndPoint.swift */; };
 		DDB6F5F72746176E00D2BEFC /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5F62746176E00D2BEFC /* ListRepository.swift */; };
-		DDD38A0F2748D9660012D284 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A0E2748D9660012D284 /* UIViewController+ActivityIndicator.swift */; };
 		DDD38A1227498BFA0012D284 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A1127498BFA0012D284 /* Database.swift */; };
 		DDD38A142749926E0012D284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDD38A132749926E0012D284 /* GoogleService-Info.plist */; };
 		DDD38A162749B9040012D284 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A152749B9040012D284 /* Reachability.swift */; };
@@ -37,9 +36,7 @@
 		DDD38A1E2749E3C30012D284 /* UIImageView+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A1D2749E3C30012D284 /* UIImageView+Cache.swift */; };
 		DDD38A222749FEEA0012D284 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A202749FEEA0012D284 /* DetailViewController.swift */; };
 		DDD38A232749FEEA0012D284 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD38A212749FEEA0012D284 /* DetailViewController.xib */; };
-		DDDB82E9274702B70021D527 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB82E8274702B70021D527 /* CoreDataStack.swift */; };
 		DDDB82EB2747060F0021D527 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB82EA2747060F0021D527 /* DataProvider.swift */; };
-		DDDB82EF274753240021D527 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB82EE274753240021D527 /* JSONDecoder.swift */; };
 		DDDB82F227475AB10021D527 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB82F127475AB10021D527 /* Character.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,7 +85,6 @@
 		DDB6F5F227460DA400D2BEFC /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		DDB6F5F427460DC900D2BEFC /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		DDB6F5F62746176E00D2BEFC /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
-		DDD38A0E2748D9660012D284 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		DDD38A1127498BFA0012D284 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		DDD38A132749926E0012D284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDD38A152749B9040012D284 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -97,9 +93,7 @@
 		DDD38A1D2749E3C30012D284 /* UIImageView+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cache.swift"; sourceTree = "<group>"; };
 		DDD38A202749FEEA0012D284 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DDD38A212749FEEA0012D284 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
-		DDDB82E8274702B70021D527 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		DDDB82EA2747060F0021D527 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		DDDB82EE274753240021D527 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
 		DDDB82F127475AB10021D527 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,7 +210,6 @@
 				DDB6F5E22746061500D2BEFC /* Security.swift */,
 				DDB6F5E827460BC300D2BEFC /* Logger+Log.swift */,
 				DDD38A152749B9040012D284 /* Reachability.swift */,
-				DDD38A1D2749E3C30012D284 /* UIImageView+Cache.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -238,7 +231,6 @@
 				DDB6F5EE27460D3000D2BEFC /* URLRequest.swift */,
 				DDB6F5F227460DA400D2BEFC /* Errors.swift */,
 				DDB6F5F427460DC900D2BEFC /* EndPoint.swift */,
-				DDDB82EE274753240021D527 /* JSONDecoder.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -262,7 +254,7 @@
 		DDD38A0D2748D93D0012D284 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				DDD38A0E2748D9660012D284 /* UIViewController+ActivityIndicator.swift */,
+				DDD38A1D2749E3C30012D284 /* UIImageView+Cache.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -304,7 +296,6 @@
 		DDDB82E52746F3CB0021D527 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				DDDB82E8274702B70021D527 /* CoreDataStack.swift */,
 				DDDB82EA2747060F0021D527 /* DataProvider.swift */,
 			);
 			path = Database;
@@ -506,13 +497,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB6F5F527460DC900D2BEFC /* EndPoint.swift in Sources */,
-				DDDB82EF274753240021D527 /* JSONDecoder.swift in Sources */,
 				DDB6F5E02745F76400D2BEFC /* ListViewModel.swift in Sources */,
 				DDB6F5B02745F4DF00D2BEFC /* ListViewController.swift in Sources */,
 				DDB6F5AC2745F4DF00D2BEFC /* AppDelegate.swift in Sources */,
 				DDB6F5F127460D5F00D2BEFC /* HTTPMethod.swift in Sources */,
 				DDB6F5F72746176E00D2BEFC /* ListRepository.swift in Sources */,
-				DDDB82E9274702B70021D527 /* CoreDataStack.swift in Sources */,
 				DDB6F5F327460DA400D2BEFC /* Errors.swift in Sources */,
 				DDD38A1E2749E3C30012D284 /* UIImageView+Cache.swift in Sources */,
 				DDDB82F227475AB10021D527 /* Character.swift in Sources */,
@@ -528,7 +517,6 @@
 				DDB6F5ED27460C8B00D2BEFC /* Repository.swift in Sources */,
 				DDB6F5EF27460D3000D2BEFC /* URLRequest.swift in Sources */,
 				DDD38A1227498BFA0012D284 /* Database.swift in Sources */,
-				DDD38A0F2748D9660012D284 /* UIViewController+ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
