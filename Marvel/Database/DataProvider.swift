@@ -1,13 +1,29 @@
 import Firebase
 import Foundation
 
-final class DataProvider {
-    let db = Database.shared.db()
+protocol DataProviderInput {
+    func deleteAll()
+    func save(character: Character)
+    func save(image: UIImage?, on id: Int)
+}
+
+protocol DataProviderOutput {
+    func enableNetwork(_ completion: ((Error?) -> Void)?)
+    func disabledNetwork(name: String, closure: @escaping (Result<[Results], Error>) -> ())
+    func disabledNetwork(url: String, id: Int, closure: @escaping (UIImage?) -> ())
+}
+
+protocol DataProvider: DataProviderInput, DataProviderOutput { }
+
+final class DefaultDataProvider: DataProvider {
+    private let db = Database.shared.db()
     
+    // MARK: Delete
     func deleteAll() {
         deleteCollection()
     }
     
+    // MARK: Save
     func save(character: Character) {
         character.data.results.forEach { result in
             db.collection(.resultPath).document(String(describing: result.id)).setData(dict(from: result))
@@ -19,7 +35,21 @@ final class DataProvider {
         db.collection(.imagePath).document(String(describing: id)).setData(["\(id)": data])
     }
     
-    func fetchImage(for id: Int, url: String, closure: @escaping (UIImage?) -> ()) {
+    // MARK: Offline Data
+    func disabledNetwork(name: String, closure: @escaping (Result<[Results], Error>) -> ()) {
+        db.disableNetwork { [weak self] error in
+            self?.fetchAll(name: name, closure: closure)
+        }
+    }
+    
+    func disabledNetwork(url: String, id: Int, closure: @escaping (UIImage?) -> ()) {
+        db.disableNetwork { [weak self] error in
+            self?.fetchImage(for: id, url: url, closure: closure)
+        }
+    }
+    
+    // MARK: Fetching from Firebase/Local Firebase
+    private func fetchImage(for id: Int, url: String, closure: @escaping (UIImage?) -> ()) {
         db.collection(.imagePath).document(String(describing: id)).getDocument(completion: { document, error in
             guard error == nil else {
                 closure(UIImage(named: "notAvailable"))
@@ -30,7 +60,7 @@ final class DataProvider {
         })
     }
     
-    func fetchAll(name: String, closure: @escaping (Result<[Results], Error>) -> ()) {
+    private func fetchAll(name: String, closure: @escaping (Result<[Results], Error>) -> ()) {
         var ref: Query?
         if !name.isEmpty {
             ref = db.collection(.resultPath).order(by: "name").limit(to: 10).start(after: [name])
@@ -62,23 +92,12 @@ final class DataProvider {
         }
     }
     
-    func disabledNetwork(name: String, closure: @escaping (Result<[Results], Error>) -> ()) {
-        db.disableNetwork { [weak self] error in
-            self?.fetchAll(name: name, closure: closure)
-        }
-    }
-    
-    func disabledNetwork(url: String, id: Int, closure: @escaping (UIImage?) -> ()) {
-        db.disableNetwork { [weak self] error in
-            self?.fetchImage(for: id, url: url, closure: closure)
-        }
-    }
-    
-    
+    // MARK: Enable Network
     func enableNetwork(_ completion: ((Error?) -> Void)?) {
         db.enableNetwork(completion: completion)
     }
-    
+        
+    // MARK: Helpers
     private func urlsDict(from urls: [URLElement]) -> [String: String] {
         var dict: [String: String] = [:]
         urls.forEach { dict[$0.type] = $0.url }
@@ -95,9 +114,14 @@ final class DataProvider {
         ]
     }
     
+    // MARK: Collection Deletion
+    /// Resetting all paths - Here it is images/Results path
     private func deleteCollection() {
-        // [START delete_collection]
         delete(collection: db.collection(.imagePath)) { error in
+            print(error.debugDescription)
+        }
+        
+        delete(collection: db.collection(.resultPath)) { error in
             print(error.debugDescription)
         }
         
@@ -130,7 +154,6 @@ final class DataProvider {
                 }
             }
         }
-        // [END delete_collection]
     }
 }
 

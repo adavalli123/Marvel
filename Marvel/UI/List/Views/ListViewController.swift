@@ -3,10 +3,11 @@ import CoreData
 
 class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private let repo = ListRepository()
-    private let dataProvider = DataProvider()
+    private let dataProvider =  DefaultDataProvider()
     private lazy var viewModel: ListViewModel = DefaultListViewModel(repo: repo, dataProvider: dataProvider)
     private let searchController = UISearchController(searchResultsController: nil)
     private var offset = 0
+    
     private var filteredData: [Results] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -64,7 +65,8 @@ class ListViewController: UITableViewController, UITableViewDataSourcePrefetchin
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier, for: indexPath) as? ListCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier,
+                                                       for: indexPath) as? ListCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         
         let result = isFiltering ? filteredData[indexPath.row] : data[indexPath.row]

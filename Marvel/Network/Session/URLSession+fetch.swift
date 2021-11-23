@@ -1,6 +1,7 @@
 import Foundation
 import OSLog
 import UIKit
+import Combine
 
 public protocol Session {
     static func fetch<T: Decodable>(_ endpoint: EndPoint, completion: @escaping (Result<T, Error>) -> Void)
