@@ -26,14 +26,15 @@ class DefaultListViewModel: ListViewModel {
     }
     
     func getResults(offset: Int, _ closure: @escaping ([Results]) -> Void) {
-        guard self.offset < offset || offset == 0 else { return }
+        guard self.offset < offset || offset == 0, !wasAnyRequestsPending else { return }
         self.offset = offset
-        guard !wasAnyRequestsPending else { return }
         wasAnyRequestsPending = true
+        
         guard Reachability.isConnectedToNetwork() else {
             self.fetchFromLocalDB(closure)
             return
         }
+        
         fetchFromRemote(closure)
     }
     
