@@ -16,6 +16,7 @@ class DefaultListViewModel: ListViewModel {
     private var lastFetchedName = ""
     private let repo: ListRepository?
     private let dataProvider: DataProvider
+    private let limit = 10
     private var offset = 0
     private var wasAnyRequestsPending = false
     
@@ -90,7 +91,7 @@ class DefaultListViewModel: ListViewModel {
     private func fetchFromRemote(_ closure: @escaping ([Results]) -> Void) {
         dataProvider.enableNetwork { [weak self] error in
             guard error == nil, let self = self else { return }
-            self.repo?.fetch(.characters(offset: self.offset), completion: { result in
+            self.repo?.fetch(.characters(limit: self.limit, offset: self.offset), completion: { result in
                 switch result {
                 case .success(let characterResult):
                     self.dataProvider.save(character: characterResult)

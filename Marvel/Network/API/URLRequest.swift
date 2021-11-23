@@ -17,7 +17,7 @@ extension URLRequest: Request {
         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,
         timeoutInterval: TimeInterval = .infinity
     ) {
-        guard let url = URL(string: endpoint.path) else {
+        guard let url = endpoint.path else {
             Logger.log.error("URL Error - Un-available to get the valid URL")
             preconditionFailure("Invalid URL used to create URL instance")
         }

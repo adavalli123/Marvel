@@ -12,6 +12,7 @@
 		DD51AE78274C644E00045383 /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE77274C644E00045383 /* UITableView+Register.swift */; };
 		DD51AE7F274C659E00045383 /* NSMutableAttributedString+Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE7E274C659E00045383 /* NSMutableAttributedString+Link.swift */; };
 		DD51AE82274C6A7D00045383 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE81274C6A7D00045383 /* DetailViewModel.swift */; };
+		DD51AE88274CA57100045383 /* URL+QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE87274CA57100045383 /* URL+QueryItem.swift */; };
 		DDB6F5AC2745F4DF00D2BEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5AB2745F4DF00D2BEFC /* AppDelegate.swift */; };
 		DDB6F5AE2745F4DF00D2BEFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5AD2745F4DF00D2BEFC /* SceneDelegate.swift */; };
 		DDB6F5B02745F4DF00D2BEFC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5AF2745F4DF00D2BEFC /* ListViewController.swift */; };
@@ -69,6 +70,7 @@
 		DD51AE77274C644E00045383 /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		DD51AE7E274C659E00045383 /* NSMutableAttributedString+Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Link.swift"; sourceTree = "<group>"; };
 		DD51AE81274C6A7D00045383 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		DD51AE87274CA57100045383 /* URL+QueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+QueryItem.swift"; sourceTree = "<group>"; };
 		DDB6F5A82745F4DF00D2BEFC /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB6F5AB2745F4DF00D2BEFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDB6F5AD2745F4DF00D2BEFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		DD51AE7D274C658900045383 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				DD51AE87274CA57100045383 /* URL+QueryItem.swift */,
 				DD51AE7E274C659E00045383 /* NSMutableAttributedString+Link.swift */,
 			);
 			path = Foundation;
@@ -551,6 +554,7 @@
 				DDB6F5F527460DC900D2BEFC /* EndPoint.swift in Sources */,
 				DDB6F5E02745F76400D2BEFC /* ListViewModel.swift in Sources */,
 				DDB6F5B02745F4DF00D2BEFC /* ListViewController.swift in Sources */,
+				DD51AE88274CA57100045383 /* URL+QueryItem.swift in Sources */,
 				DDB6F5AC2745F4DF00D2BEFC /* AppDelegate.swift in Sources */,
 				DDB6F5F127460D5F00D2BEFC /* HTTPMethod.swift in Sources */,
 				DDB6F5F72746176E00D2BEFC /* ListRepository.swift in Sources */,
