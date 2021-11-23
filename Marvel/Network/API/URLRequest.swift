@@ -1,7 +1,7 @@
 import Foundation
 import OSLog
 
-public protocol Request {
+protocol Request {
     init(
         endpoint: EndPoint,
         httpMethod: HTTPMethod,
@@ -11,7 +11,7 @@ public protocol Request {
 }
 
 extension URLRequest: Request {
-    public init(
+    init(
         endpoint: EndPoint,
         httpMethod: HTTPMethod = .get,
         cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy,

@@ -3,13 +3,13 @@ import OSLog
 import UIKit
 import Combine
 
-public protocol Session {
+protocol Session {
     static func fetch<T: Decodable>(_ endpoint: EndPoint, completion: @escaping (Result<T, Error>) -> Void)
     static func fetchImage(_ endpoint: EndPoint, completion: @escaping (Result<UIImage?, Error>) -> Void)
 }
 
 extension URLSession: Session {
-    public static func fetchImage(_ endpoint: EndPoint, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+    static func fetchImage(_ endpoint: EndPoint, completion: @escaping (Result<UIImage?, Error>) -> Void) {
         Self.fetchData(endpoint) { result in
             switch result {
             case .success(let data):
@@ -21,7 +21,7 @@ extension URLSession: Session {
         }
     }
     
-    public static func fetch<T>(_ endpoint: EndPoint, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    static func fetch<T>(_ endpoint: EndPoint, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
         Self.fetchData(endpoint) { result in
             switch result {
             case .success(let data):

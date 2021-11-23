@@ -1,6 +1,6 @@
 import Foundation
 
-public enum EndPoint: Hashable {
+enum EndPoint: Hashable {
     case characters(limit: Int, offset: Int)
     case image(url: String)
 }
