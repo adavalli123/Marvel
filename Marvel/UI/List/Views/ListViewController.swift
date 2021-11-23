@@ -70,9 +70,11 @@ class ListViewController: UITableViewController, UITableViewDataSourcePrefetchin
         cell.selectionStyle = .none
         
         let result = isFiltering ? filteredData[indexPath.row] : data[indexPath.row]
+        cell.albumImageView.showActivityIndicator()
         viewModel.getImages(result: result) { image in
             DispatchQueue.main.async {
                 cell.albumImageView.image = image
+                cell.albumImageView.hideActivityIndicator()
             }
         }
         cell.titleLabel.text = result.name
