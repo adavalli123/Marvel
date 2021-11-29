@@ -39,18 +39,20 @@ class DefaultListViewModel: ListViewModel {
     }
     
     func getImages(result: Results, closure: @escaping (UIImage?) -> ()) {
-        let url = result.thumbnail.path + "." + result.thumbnail.thumbnailExtension
-        if let cacheImage = imageCache.object(forKey: url as AnyObject) as? UIImage {
-            closure(cacheImage)
-            return
+        DispatchQueue.global().sync {
+            let url = result.thumbnail.path + "." + result.thumbnail.thumbnailExtension
+            if let cacheImage = imageCache.object(forKey: url as AnyObject) as? UIImage {
+                closure(cacheImage)
+                return
+            }
+            
+            guard Reachability.isConnectedToNetwork() else {
+                self.fetchImagesFromLocalDB(url: url, id: result.id, closure: closure)
+                return
+            }
+            
+            fetchImagesFromRemote(url: url, id: result.id, closure: closure)
         }
-        
-        guard Reachability.isConnectedToNetwork() else {
-            self.fetchImagesFromLocalDB(url: url, id: result.id, closure: closure)
-            return
-        }
-        
-        fetchImagesFromRemote(url: url, id: result.id, closure: closure)
     }
     
     private func fetchImagesFromRemote(url: String, id: Int, closure: @escaping (UIImage?) -> ()) {
