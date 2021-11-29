@@ -17,6 +17,9 @@
 		DD51AE8D274CAFB500045383 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE8C274CAFB500045383 /* MockListViewModel.swift */; };
 		DD51AE90274CB7A300045383 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE8F274CB7A300045383 /* ListViewModelTests.swift */; };
 		DD51AE92274D43FD00045383 /* UIView+Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD51AE91274D43FD00045383 /* UIView+Activity.swift */; };
+		DD51AE992755806100045383 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD51AE9827557FE700045383 /* GoogleService-Info.plist */; };
+		DD51AE9A2755806700045383 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD51AE9827557FE700045383 /* GoogleService-Info.plist */; };
+		DD51AE9B2755806800045383 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD51AE9827557FE700045383 /* GoogleService-Info.plist */; };
 		DDB6F5AC2745F4DF00D2BEFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5AB2745F4DF00D2BEFC /* AppDelegate.swift */; };
 		DDB6F5AE2745F4DF00D2BEFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5AD2745F4DF00D2BEFC /* SceneDelegate.swift */; };
 		DDB6F5B02745F4DF00D2BEFC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5AF2745F4DF00D2BEFC /* ListViewController.swift */; };
@@ -38,7 +41,6 @@
 		DDB6F5F527460DC900D2BEFC /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5F427460DC900D2BEFC /* EndPoint.swift */; };
 		DDB6F5F72746176E00D2BEFC /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB6F5F62746176E00D2BEFC /* ListRepository.swift */; };
 		DDD38A1227498BFA0012D284 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A1127498BFA0012D284 /* Database.swift */; };
-		DDD38A142749926E0012D284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDD38A132749926E0012D284 /* GoogleService-Info.plist */; };
 		DDD38A162749B9040012D284 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A152749B9040012D284 /* Reachability.swift */; };
 		DDD38A1A2749D6620012D284 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD38A192749D6620012D284 /* ListCell.xib */; };
 		DDD38A1C2749D6790012D284 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD38A1B2749D6790012D284 /* ListCell.swift */; };
@@ -82,6 +84,7 @@
 		DD51AE8C274CAFB500045383 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
 		DD51AE8F274CB7A300045383 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		DD51AE91274D43FD00045383 /* UIView+Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Activity.swift"; sourceTree = "<group>"; };
+		DD51AE9827557FE700045383 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDB6F5A82745F4DF00D2BEFC /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB6F5AB2745F4DF00D2BEFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDB6F5AD2745F4DF00D2BEFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +110,6 @@
 		DDB6F5F427460DC900D2BEFC /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		DDB6F5F62746176E00D2BEFC /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
 		DDD38A1127498BFA0012D284 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		DDD38A132749926E0012D284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDD38A152749B9040012D284 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DDD38A192749D6620012D284 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		DDD38A1B2749D6790012D284 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
@@ -224,11 +226,19 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		DD51AE9327557C6400045383 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DD51AE9827557FE700045383 /* GoogleService-Info.plist */,
+				DD51AE89274CAD1900045383 /* Readme.md */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		DDB6F59F2745F4DE00D2BEFC = {
 			isa = PBXGroup;
 			children = (
-				DD51AE89274CAD1900045383 /* Readme.md */,
-				DDD38A132749926E0012D284 /* GoogleService-Info.plist */,
+				DD51AE9327557C6400045383 /* Resources */,
 				DDB6F5AA2745F4DF00D2BEFC /* Marvel */,
 				DDB6F5C42745F4E100D2BEFC /* MarvelTests */,
 				DDB6F5CE2745F4E100D2BEFC /* MarvelUITests */,
@@ -518,10 +528,10 @@
 			files = (
 				DDB6F5BB2745F4E100D2BEFC /* LaunchScreen.storyboard in Resources */,
 				DDD38A232749FEEA0012D284 /* DetailViewController.xib in Resources */,
-				DDD38A142749926E0012D284 /* GoogleService-Info.plist in Resources */,
 				DDB6F5B82745F4E100D2BEFC /* Assets.xcassets in Resources */,
 				DDB6F5B32745F4DF00D2BEFC /* Main.storyboard in Resources */,
 				DDD38A1A2749D6620012D284 /* ListCell.xib in Resources */,
+				DD51AE992755806100045383 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD51AE9A2755806700045383 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +547,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD51AE9B2755806800045383 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
